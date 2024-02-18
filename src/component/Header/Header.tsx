@@ -19,9 +19,13 @@ const NavbarIcon = () => {
 
 function Header() {
   useEffect(() => {
-    let fade = document.getElementsByClassName("nav-container")[0];
+    const fade = Array.from(
+      document.getElementsByClassName(
+        "nav-container"
+      ) as HTMLCollectionOf<HTMLElement>
+    );
     setTimeout(() => {
-      fade.style.visibility = "visible";
+      fade[0].style.visibility = "visible";
     }, 1000);
   }, []);
   return (

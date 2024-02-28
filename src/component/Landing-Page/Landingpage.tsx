@@ -68,7 +68,7 @@ const Section3 = () => {
               rx="46"
               ry="44"
               fill="#D6D1F8"
-              fill-opacity="0.2"
+              fillOpacity="0.2"
             />
           </svg>
           <h3>Analytics</h3>
@@ -95,7 +95,7 @@ const Section3 = () => {
               rx="46"
               ry="44"
               fill="#D6D1F8"
-              fill-opacity="0.2"
+              fillOpacity="0.2"
             />
           </svg>
           <h3>Social interactions</h3>
@@ -118,7 +118,7 @@ const Section3 = () => {
               rx="46"
               ry="44"
               fill="#D6D1F8"
-              fill-opacity="0.2"
+              fillOpacity="0.2"
             />
           </svg>
           <h3>Content creation</h3>

@@ -1,0 +1,324 @@
+#sign-up {
+  width: 100%;
+  display: flex;
+  height: 100dvh;
+  overflow: hidden;
+}
+#sign-up > .a {
+  width: 45%;
+  height: 100%;
+  display: flex;
+  background: url("../../../public/pic7.jpeg") no-repeat center center;
+  background-size: cover;
+}
+#sign-up > .a > div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #00000080;
+}
+#sign-up > .a > div > div {
+  gap: 20px;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+#sign-up > .a > div > div > h4 {
+  color: #fff;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 72px;
+  letter-spacing: 0em;
+}
+#sign-up > .a > div > div > p {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 36px;
+  letter-spacing: 0em;
+}
+
+#sign-up > .b {
+  width: 55%;
+  height: 100%;
+  display: flex;
+  max-height: 100dvh;
+  justify-content: center;
+  background-color: #fff;
+}
+
+#sign-up > .b > div {
+  gap: 24px;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  margin: 0 50px;
+  max-width: 520px;
+  max-height: 100dvh;
+  flex-direction: column;
+  margin: 15px auto auto auto;
+}
+
+#sign-up > .b #log-in {
+  gap: 24px;
+  width: 100%;
+  display: flex;
+  max-width: 520px;
+  height: fit-content;
+  flex-direction: column;
+  background-color: #fff;
+}
+#sign-up > .b #log-in > label {
+  gap: 12px;
+  display: flex;
+  font-size: 16px;
+  font-weight: 400;
+  flex-direction: column;
+  font-family: "DM Sans", sans-serif;
+}
+#sign-up > .b #log-in > label > input {
+  padding: 0;
+  width: 100%;
+  height: 56px;
+  outline: none;
+  font-size: 18px;
+  padding: 0 16px;
+  max-width: 486px;
+  font-weight: 400;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  font-family: "DM Sans", sans-serif;
+  box-shadow: 0px 2px 2px 0px rgba(33, 37, 41, 0.06);
+}
+#sign-up > .b #log-in > button {
+  width: 100%;
+  height: 56px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  max-width: 520px;
+  font-weight: 700;
+  border-radius: 8px;
+  background: #543ee0;
+  font-family: "DM Sans", sans-serif;
+}
+
+#sign-up > .b #register {
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  max-width: 520px;
+  margin-bottom: 20px;
+  flex-direction: column;
+  background-color: #fff;
+  justify-content: space-around;
+}
+#sign-up > .b #register > :nth-child(1) {
+  gap: 10px;
+  display: flex;
+}
+#sign-up > .b #register > :nth-child(1) > label {
+  gap: 6px;
+  width: 100%;
+  display: flex;
+  font-size: 16px;
+  font-weight: 400;
+  max-width: 252px;
+  flex-direction: column;
+  font-family: "DM Sans", sans-serif;
+}
+#sign-up > .b #register > :nth-child(1) > label > input {
+  padding: 0;
+  height: 43px;
+  outline: none;
+  font-size: 16px;
+  padding: 0 16px;
+  max-width: 252px;
+  font-weight: 400;
+  border-radius: 8px;
+  width: calc(100% - 32px);
+  border: 1px solid #ced4da;
+  font-family: "DM Sans", sans-serif;
+  box-shadow: 0px 2px 2px 0px #2125290f;
+}
+#sign-up > .b #register > :nth-child(2) {
+  gap: 6px;
+  width: 100%;
+  display: flex;
+  font-size: 16px;
+  font-weight: 400;
+  flex-direction: column;
+  font-family: "DM Sans", sans-serif;
+}
+#sign-up > .b #register > :nth-child(2) > select {
+  padding: 0;
+  width: 100%;
+  height: 43px;
+  outline: none;
+  font-size: 16px;
+  padding: 0 16px;
+  font-weight: 400;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  font-family: "DM Sans", sans-serif;
+  box-shadow: 0px 2px 2px 0px rgba(33, 37, 41, 0.06);
+}
+#sign-up > .b #register > :nth-child(4),
+#sign-up > .b #register > :nth-child(3),
+#sign-up > .b #register > :nth-child(5) {
+  gap: 6px;
+  width: 100%;
+  display: flex;
+  font-size: 16px;
+  font-weight: 400;
+  flex-direction: column;
+  font-family: "DM Sans", sans-serif;
+}
+#sign-up > .b #register > :nth-child(3) > input,
+#sign-up > .b #register > :nth-child(4) > input,
+#sign-up > .b #register > :nth-child(5) > input {
+  padding: 0;
+  height: 43px;
+  outline: none;
+  font-size: 16px;
+  padding: 0 16px;
+  max-width: 486px;
+  font-weight: 400;
+  border-radius: 8px;
+  width: calc(100% - 32px);
+  border: 1px solid #ced4da;
+  font-family: "DM Sans", sans-serif;
+  box-shadow: 0px 2px 2px 0px rgba(33, 37, 41, 0.06);
+}
+#sign-up > .b #register > :nth-child(6) {
+  width: 100%;
+  height: 43px;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  max-width: 520px;
+  font-weight: 700;
+  border-radius: 8px;
+  background: #543ee0;
+  font-family: "DM Sans", sans-serif;
+}
+#sign-up > .b #register > :nth-child(7) {
+  gap: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+#sign-up > .b #register > :nth-child(7) > button {
+  gap: 10px;
+  width: 100%;
+  height: 46px;
+  border: none;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+  border-radius: 8px;
+  align-items: center;
+  border: 1px solid #371de0;
+  font-family: "DM Sans", sans-serif;
+}
+#sign-up > .b #register > :nth-child(7) > button > p {
+  margin-left: 15%;
+  color: #000;
+  font-size: 18px;
+  font-weight: 700;
+  max-width: 520px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+#sign-up > .b #register > :nth-child(7) > button > img {
+  width: 24px;
+  height: 24px;
+  padding: 8px;
+  pointer-events: none;
+  justify-self: flex-start;
+  background-color: #fff;
+}
+#sign-up > .b #register > :nth-child(7) > :nth-child(1) {
+  width: 80%;
+  transition: all 1s ease;
+}
+#sign-up > .b #register > :nth-child(7) > :nth-child(2) {
+  width: 10%;
+  transition: all .5s ease-out;
+}
+#sign-up > .b #register > :nth-child(7) > :nth-child(2):hover {
+  width: 80%;
+}
+
+#sign-up > .b #sign-up-header {
+  gap: 12px;
+  display: flex;
+  margin-top: 10px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#sign-up > .b #sign-up-header > h1 {
+  font-size: 25px;
+  font-weight: 600;
+}
+#sign-up > .b #sign-up-header > section {
+  gap: 3px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#sign-up > .b #sign-up-header > section > :nth-child(1) {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+#sign-up > .b #sign-up-header > section > :nth-child(1) > p {
+  font-size: 14px;
+  cursor: default;
+  font-weight: 700;
+  font-family: "DM Sans", sans-serif;
+}
+#sign-up > .b #sign-up-header > section > :nth-child(2) {
+  height: 5px;
+  width: 100%;
+  position: relative;
+  background-color: #d0d0d0;
+}
+#sign-up > .b #sign-up-header > section > :nth-child(2) > div {
+  width: 50%;
+  height: 5px;
+  position: absolute;
+  background-color: #543ee0;
+}
+#sign-up > .b #sign-up-header > section > :nth-child(2) > .left {
+  animation: slide-left 0.2s forwards ease-in;
+}
+#sign-up > .b #sign-up-header > section > :nth-child(2) > .right {
+  animation: slide-right 0.2s forwards ease-in;
+}
+@keyframes slide-left {
+  0% {
+    transform: translateX(100%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+@keyframes slide-right {
+  0% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 1;
+  }
+}

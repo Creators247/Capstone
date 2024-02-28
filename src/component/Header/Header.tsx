@@ -1,5 +1,7 @@
 import "./header.css";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
+
 const NavbarIcon = () => {
   const openNavBar = () => {
     let navBar = document.getElementById("navicon");
@@ -24,6 +26,7 @@ function Header() {
         "nav-container"
       ) as HTMLCollectionOf<HTMLElement>
     );
+
     setTimeout(() => {
       fade[0].style.visibility = "visible";
     }, 1000);
@@ -35,10 +38,10 @@ function Header() {
         {window.screen.width <= 1000 ? <h1 className="logo">CHATTER</h1> : null}
 
         <nav>
-          <a>Home</a>
-          <a>About Us</a>
-          <a>Contact</a>
-          <a>Blogs</a>
+          <Link to="/sign-up">Home</Link>
+          <Link to="/">About Us</Link>
+          <Link to="/">Contact</Link>
+          <Link to="/">Blogs</Link>
         </nav>
 
         <div className="signin-buttons">

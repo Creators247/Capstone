@@ -1,5 +1,5 @@
 import "./signup.css";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 
 interface props {
   collectDataFromSignUpHeader: (data: any) => void;

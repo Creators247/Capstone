@@ -44,12 +44,10 @@
   width: 55%;
   height: 100%;
   display: flex;
-  padding: 0 30px;
   max-height: 100dvh;
   justify-content: center;
   background-color: #fff;
 }
-
 #sign-up > .b > div {
   gap: 24px;
   width: 100%;
@@ -327,6 +325,7 @@
     overflow: visible;
     align-items: center;
     justify-content: center;
+    width: calc(100% - 100px);
   }
   #sign-up > .a {
     display: none;
@@ -388,7 +387,8 @@
   }
   #sign-up {
     height: 100%;
-    padding: 0 40px;
+    padding: 0 30px;
+    width: calc(100% - 60px);
   }
   #sign-up > .b > div {
     gap: 12px;

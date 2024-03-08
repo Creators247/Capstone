@@ -1,0 +1,18 @@
+#feeds {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  max-height: 100dvh;
+}
+#feeds > div{
+  gap: 50px;
+  width: 100%;
+  display: flex;
+  /* align-items: center; */
+  flex-direction: column;
+}
+@media only screen and (max-width: 768px) {
+  #feeds > div{
+    gap: 20px;
+  }
+}

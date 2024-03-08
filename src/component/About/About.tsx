@@ -1,4 +1,4 @@
-import "./landingpage.css";
+import "./about.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
@@ -178,7 +178,7 @@ const Section5 = () => {
     </section>
   );
 };
-function Landingpage() {
+function About() {
   return (
     <>
       <Header />
@@ -194,4 +194,4 @@ function Landingpage() {
   );
 }
 
-export default Landingpage;
+export default About;

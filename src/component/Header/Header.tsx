@@ -39,7 +39,7 @@ function Header() {
 
         <nav>
           <Link to="/sign-up">Home</Link>
-          <Link to="/">About Us</Link>
+          <Link to="/Feeds">About Us</Link>
           <Link to="/">Contact</Link>
           <Link to="/">Blogs</Link>
         </nav>

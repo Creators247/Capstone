@@ -34,9 +34,16 @@
 #search-bar > form > input::placeholder {
   color: #d0d0d0;
 }
-#search-bar > form >:nth-child(3) {
+#search-bar > form > :nth-child(3) {
   display: none;
   color: #c50c0c;
+}
+
+#search-bar > h1 {
+  display: none;
+  margin-top: 0;
+  font-size: 20px;
+  color: #543ee0;
 }
 
 #search-bar > div {
@@ -112,13 +119,25 @@
     line-height: 0;
     font-size: 16px;
   }
-  #search-bar > form >:nth-child(3) {
+  #search-bar > form > :nth-child(3) {
     display: flex;
+  }
+  #search-bar > form > svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  #search-bar > h1 {
+    left: 20px;
+    display: flex;
+    font-size: 23px;
+    position: absolute;
   }
 
   #search-bar > div {
     gap: 20px;
     width: fit-content;
+    align-items: center;
   }
   #search-bar > div > svg {
     display: none;
@@ -131,8 +150,8 @@
     display: flex;
   }
   #search-bar > div > button > svg {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
   }
 }
 
@@ -141,11 +160,13 @@
     gap: 15px;
     height: 35px;
     padding: 5px 12px;
+    padding-top: 15px;
     width: calc(100% - 24px);
   }
   #search-bar > form {
     left: 0;
     gap: 10px;
+    z-index: 2;
     height: 100%;
     padding: 12px;
     max-width: 100%;
@@ -153,14 +174,14 @@
     width: calc(100% - 24px);
     background-color: #fff;
   }
-  #search-bar > form > svg {
-    width: 19px;
-    height: 20px;
-  }
   #search-bar > form > input {
     font-size: 14px;
   }
 
+  #search-bar > h1 {
+    left: 10px;
+    font-size: 20px;
+  }
   #search-bar > div {
     gap: 10px;
   }
@@ -169,7 +190,7 @@
     height: 30px;
   }
   #search-bar > div > button > svg {
-    width: 17px;
+    width: 20px;
     height: 20px;
   }
 }

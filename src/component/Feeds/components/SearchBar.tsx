@@ -55,6 +55,8 @@ const SearchBar = () => {
         <CloseCircle variant="Broken" onClick={SearchBarSlideout} />
       </form>
 
+      <h1>CHATTER</h1>
+
       <div>
         <NotificationBing />
         <button onClick={SearchBarSlideIn}>

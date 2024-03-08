@@ -109,6 +109,9 @@
     width:calc(95% - 20px) ;
     border: 0px solid #d0d0d0;
   }
+  #feed-content > :nth-child(1){
+    align-items:center ;
+  }
   #feed-content > :nth-child(1) > div > h3 {
     font-size: 17px;
     font-weight: 500;

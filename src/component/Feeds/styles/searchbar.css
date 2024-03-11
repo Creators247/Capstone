@@ -59,17 +59,22 @@
   width: 39px;
   height: 39px;
   border-radius: 50%;
-  background: url("../../../../public/pic 1.jpeg") no-repeat center;
-  background-size: cover;
 }
 #search-bar > div > button {
   padding: 0;
   border: none;
   outline: none;
-  display: none;
   width: fit-content;
   height: fit-content;
   background-color: transparent;
+}
+#search-bar > div > button > svg {
+  width: 35px;
+  height: 30px;
+}
+#search-bar > div > button:nth-child(2) {
+  display: none;
+  color: black;
 }
 #search-bar > div > div > div {
   width: 100%;
@@ -106,13 +111,21 @@
     gap: 20px;
     height: 40px;
     padding: 5px 20px;
+    padding-top: 15px;
     width: calc(100% - 40px);
     justify-content: flex-end;
   }
   #search-bar > form {
-    height: 35px;
-    max-width: 400px;
+    left: 0;
+    gap: 10px;
+    z-index: 2;
+    height: 100%;
+    padding: 20px;
+    max-width: 100%;
+    position: absolute;
     visibility: hidden;
+    width: calc(100% - 40px);
+    background-color: #fff;
     animation: searchbar-side-out ease 0.5s forwards;
   }
   #search-bar > form > input {
@@ -135,11 +148,12 @@
   }
 
   #search-bar > div {
-    gap: 20px;
+    gap: 15px;
     width: fit-content;
     align-items: center;
+    justify-content: center;
   }
-  #search-bar > div > svg {
+  #search-bar > div > :nth-child(1) {
     display: none;
   }
   #search-bar > div > div {
@@ -148,10 +162,16 @@
   }
   #search-bar > div > button {
     display: flex;
+    align-items: center;
   }
   #search-bar > div > button > svg {
-    width: 25px;
-    height: 25px;
+    width: 28px;
+    height: 28px;
+  }
+  #search-bar > div > button:nth-child(2) {
+    display: flex;
+    width: 23px;
+    height: 23px;
   }
 }
 
@@ -160,19 +180,11 @@
     gap: 15px;
     height: 35px;
     padding: 5px 12px;
-    padding-top: 15px;
     width: calc(100% - 24px);
   }
   #search-bar > form {
-    left: 0;
-    gap: 10px;
-    z-index: 2;
-    height: 100%;
     padding: 12px;
-    max-width: 100%;
-    position: absolute;
     width: calc(100% - 24px);
-    background-color: #fff;
   }
   #search-bar > form > input {
     font-size: 14px;
@@ -183,15 +195,11 @@
     font-size: 20px;
   }
   #search-bar > div {
-    gap: 10px;
+    gap: 7px;
   }
   #search-bar > div > div {
     width: 30px;
     height: 30px;
-  }
-  #search-bar > div > button > svg {
-    width: 20px;
-    height: 20px;
   }
 }
 

@@ -75,16 +75,13 @@ const Register: React.FC = () => {
     e.preventDefault();
     if (password == confirmPasword) {
       try {
-        await createUserWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
+        await createUserWithEmailAndPassword(auth, email, password);
         const user = auth.currentUser;
         if (user) {
           await updateProfile(user, {
             displayName: `${fullName.firstName} ${fullName.lastName}`,
           });
+          window.location.href = "/";
         }
         e.target.reset();
       } catch (error: unknown) {
@@ -133,7 +130,7 @@ const Register: React.FC = () => {
     emailCheck = "Email address is already in use by another account";
     setEmailCheck(emailCheck);
     let reCheckEmail: any = document.getElementById("email");
-    
+
     if (reCheckEmail.name == "email") {
       reCheckEmail.style.borderColor = "red";
       setTimeout(

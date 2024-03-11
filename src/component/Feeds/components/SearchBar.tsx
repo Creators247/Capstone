@@ -1,11 +1,56 @@
 import "../styles/searchbar.css";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { SearchNormal1, NotificationBing, CloseCircle } from "iconsax-react";
+import {
+  ProfileAdd,
+  ProfileTick,
+  SearchNormal1,
+  NotificationBing,
+  CloseCircle,
+} from "iconsax-react";
 
-const SearchBar = () => {
+interface props {
+  userExist: (data: any) => void;
+}
+
+const SearchBar: React.FC<props> = ({ userExist }: any) => {
   let [searchBarElement, setSearchBarElement] = useState<HTMLElement | null>(
     null
   );
+
+  const expandNavBar = () => {
+    let navBar = document.getElementById("nav-bar");
+    if (navBar) {
+      if (window.screen.width <= 500)
+        if (navBar.style.animationName !== "nav-slide-in") {
+          navBar.style.animation = "nav-slide-in 0.5s forwards ease-out";
+        } else if (navBar.style.animationName == "nav-slide-in") {
+          navBar.style.animation = "nav-slide-out 0.5s forwards ease-out";
+        }
+    }
+  };
+
+  const Userprofile = () => {
+    if (userExist.photoURL !== null) {
+      return (
+        <div
+          style={{
+            background: `url(${userExist.photoURL}) no-repeat center`,
+            backgroundSize: "cover",
+          }}
+          onClick={expandNavBar}
+        >
+          <div></div>
+        </div>
+      );
+    } else {
+      return (
+        <button style={{ color: "#543ee0" }} onClick={expandNavBar}>
+          <ProfileTick />
+        </button>
+      );
+    }
+  };
 
   const SearchBarSlideIn = () => {
     if (searchBarElement) {
@@ -27,7 +72,7 @@ const SearchBar = () => {
         "searchbar-side-out ease 0.5s forwards";
     }
   };
-  
+
   useEffect(() => {
     // this format is to store the searchBar in the useSate of searchBar element so that i can change the animation later on
     const searchBar = document.getElementById("search-bar");
@@ -45,7 +90,7 @@ const SearchBar = () => {
   return (
     <section id="search-bar">
       <form>
-        <SearchNormal1 />
+        <SearchNormal1 style={{ color: "#543ee0" }} />
         <input
           type="text"
           name="search"
@@ -59,12 +104,18 @@ const SearchBar = () => {
 
       <div>
         <NotificationBing />
+
         <button onClick={SearchBarSlideIn}>
           <SearchNormal1 />
         </button>
-        <div>
-          <div></div>
-        </div>
+
+        {userExist ? (
+          <Userprofile />
+        ) : (
+          <Link to="/sign-up">
+            <ProfileAdd style={{ color: "#c50c0c" }} />
+          </Link>
+        )}
       </div>
     </section>
   );

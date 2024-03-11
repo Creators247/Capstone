@@ -1,21 +1,57 @@
 import "../styles/navbar.css";
+import { auth } from "../../../App";
+import { signOut } from "firebase/auth";
 import { Link } from "react-router-dom";
 import {
   Save2,
+  Login,
   Logout,
   Chart1,
   Hashtag,
   TrendUp,
-  Profile,
   FtxToken,
   Briefcase,
+  ProfileTick,
   Profile2User,
   Personalcard,
   DirectboxDefault,
   NotificationBing,
 } from "iconsax-react";
 
-const NavBar = () => {
+interface props {
+  userExist: (data: any) => void;
+}
+
+const NavBar: React.FC<props> = ({ userExist }: any) => {
+  const Userprofile = () => {
+    if (userExist.photoURL !== null) {
+      return (
+        <button>
+          <div
+            style={{
+              background: `url(${userExist.photoURL}) no-repeat center`,
+              backgroundSize: "cover",
+            }}
+          >
+            <div></div>
+          </div>
+          <p>Account</p>
+        </button>
+      );
+    } else {
+      return (
+        <button style={{ color: "#543ee0" }}>
+          <ProfileTick />
+          <p>Account</p>
+        </button>
+      );
+    }
+  };
+
+  const logOut = () => {
+    signOut(auth);
+  };
+
   return (
     <section id="nav-bar">
       <h1>CHATTER</h1>
@@ -53,7 +89,7 @@ const NavBar = () => {
       </section>
 
       <section className="trending tags">
-        <div>
+        <div >
           <TrendUp />
           <h3>Trending tags</h3>
         </div>
@@ -93,20 +129,24 @@ const NavBar = () => {
         </div>
 
         <nav>
-          <button>
-            <Profile />
-            <p>Account</p>
-          </button>
+          {userExist && <Userprofile />}
 
           <button>
             <NotificationBing />
             <p>Notifications</p>
           </button>
 
-          <button>
-            <Logout color="#ff0000" />
-            <p style={{ color: "red" }}>Log Out</p>
-          </button>
+          {userExist ? (
+            <button onClick={logOut}>
+              <Logout color="#c50c0c" />
+              <p style={{ color: "#c50c0c" }}>Log Out</p>
+            </button>
+          ) : (
+            <Link to="/sign-up">
+              <Login color="#543ee0" />
+              <p style={{ color: "#543ee0" }}>Log In</p>
+            </Link>
+          )}
         </nav>
       </section>
     </section>

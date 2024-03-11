@@ -48,7 +48,7 @@ const Login = () => {
       await signInWithEmailAndPassword(auth, email, password);
       const user = auth.currentUser;
       if (user) {
-        console.log(user);
+        window.location.href = "/";
       }
     } catch (error: unknown) {
       if (error instanceof Error && "code" in error) {

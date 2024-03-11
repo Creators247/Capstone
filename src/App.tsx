@@ -1,7 +1,7 @@
 import Home from "./component/Home";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth } from "firebase/auth";
+import { getAuth ,GoogleAuthProvider} from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_PUBLIC_API_KEY,
@@ -16,6 +16,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth();
 const analytics = getAnalytics(app);
+export const provider = new GoogleAuthProvider();
 console.log(analytics);
 
 function App() {

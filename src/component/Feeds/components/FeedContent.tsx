@@ -2,7 +2,13 @@ import "../styles/feedcontent.css";
 import { Edit2 } from "iconsax-react";
 import FeedContentHeader from "./FeedContentHeader";
 
-const FeedContent = () => {
+interface props {
+  userExist: (data: any) => void;
+}
+
+const FeedContent: React.FC<props> = ({ userExist }: any) => {
+  console.log(userExist);
+  
   return (
     <section id="feed-content">
       <div>

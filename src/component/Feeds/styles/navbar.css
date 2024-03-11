@@ -80,6 +80,7 @@
   border: none;
   display: flex;
   color: #626262;
+  align-items: center;
   background-color: #fff;
 }
 #nav-bar > section > nav > button:hover {
@@ -87,6 +88,7 @@
 }
 #nav-bar > section > nav > button > svg {
   color: inherit;
+  pointer-events: none;
   transition: all 0.5s ease;
 }
 #nav-bar > section > nav > button > svg:hover {
@@ -97,20 +99,34 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
+  pointer-events: none;
   transition: all 0.5s ease;
 }
 #nav-bar > section > nav > button > p:hover {
   color: inherit;
 }
+#nav-bar > section > nav > button > div {
+  width: 25px;
+  height: 26px;
+  border-radius: 50%;
+}
+#nav-bar > section > nav > button > div > div {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #0000002f;
+}
 #nav-bar > .persoanl {
   margin-bottom: 50px;
+}
+#nav-bar > .persoanl > nav > a > svg {
+  fill: #fff;
 }
 
 @media only screen and (max-width: 1024px) {
   #nav-bar {
     width: 100%;
     padding: 20px 0;
-    min-width: fit-content;
     max-width: fit-content;
     background-color: #fff;
   }
@@ -118,12 +134,21 @@
     display: none;
   }
   #nav-bar > section {
-    min-width: 100px;
-    max-width: 100px;
+    min-width: 70px;
+    max-width: 70px;
     width: fit-content;
     align-items: center;
   }
+  #nav-bar > section > nav {
+    align-items: center;
+  }
   #nav-bar > section > nav > a > p {
+    display: none;
+  }
+  #nav-bar > section > nav > button {
+    gap: 0;
+  }
+  #nav-bar > section > nav > button > a > p {
     display: none;
   }
   #nav-bar > section > nav > button > p {
@@ -133,8 +158,8 @@
     display: none;
   }
   #nav-bar > section > div > svg {
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     color: #543ee0;
   }
 }
@@ -165,12 +190,14 @@
 
 @media only screen and (max-width: 500px) {
   #nav-bar {
-    gap: 15px;
-    z-index: 1;
-    line-height: 0;
-    padding-top: 10px;
-    width: fit-content;
+    gap: 20px;
+    width: 55%;
+    z-index: 2;
+    padding-top: 0;
+    max-width: 100%;
+    padding-left: 10%;
     position: absolute;
+    align-items: center;
     transition: all ease 0.5s;
     animation: nav-slide-out 0.5s forwards ease-in;
   }
@@ -178,23 +205,20 @@
     display: flex;
     margin-top: 0;
     font-size: 20px;
+    align-self: flex-start;
   }
   #nav-bar > section {
     gap: 10px;
-    padding: 0 20px;
-    width: fit-content;
-    align-items: center;
-    min-width: fit-content;
-    max-width: fit-content;
+    min-width: 100%;
+    align-items: flex-start;
   }
   #nav-bar > section > div {
     gap: 5px;
     padding: 0;
-    width: 100%;
   }
   #nav-bar > section > div > h3 {
     display: flex;
-    font-size: 16px;
+    font-size: 15px;
   }
   #nav-bar > section > div > svg {
     width: 20px;
@@ -202,16 +226,27 @@
     color: #543ee0;
   }
   #nav-bar > section > nav {
-    gap: 12px;
+    gap: 10px;
     padding: 0;
+  }
+  #nav-bar > section > nav > a {
+    gap: 7px;
+    width: 100%;
+    overflow: hidden;
+    align-items: center;
   }
   #nav-bar > section > nav > a > p {
     display: flex;
     font-size: 14px;
+    white-space: nowrap;
   }
   #nav-bar > section > nav > a > svg {
     width: 20px;
     height: 20px;
+  }
+  #nav-bar > section > nav > button {
+    gap: 10px;
+    width: 100%;
   }
   #nav-bar > section > nav > button > p {
     display: flex;

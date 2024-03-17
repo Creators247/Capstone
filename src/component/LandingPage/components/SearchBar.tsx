@@ -105,9 +105,11 @@ const SearchBar: React.FC<props> = ({ userExist }: any) => {
       <div>
         <NotificationBing />
 
-        <button onClick={SearchBarSlideIn}>
-          <SearchNormal1 />
-        </button>
+        {userExist && (
+          <button onClick={SearchBarSlideIn}>
+            <SearchNormal1 />
+          </button>
+        )}
 
         {userExist ? (
           <Userprofile />

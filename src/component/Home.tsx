@@ -1,6 +1,6 @@
 import About from "./About/About";
 import SignUp from "./SignUp/SignUp";
-import Feeds from "./Feeds/FeedsPage";
+import Feeds from "./LandingPage/LandingPage";
 import { Routes, Route } from "react-router-dom";
 
 const Home = () => {

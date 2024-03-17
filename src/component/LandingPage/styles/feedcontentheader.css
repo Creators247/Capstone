@@ -30,23 +30,9 @@
 }
 
 @media only screen and (max-width: 1024px) {
-  #feed-content-header {
-    height: 40px;
-    display: flex;
-    position: relative;
-    border-radius: 8px;
-    align-items: center;
-    border: 1px solid #d0d0d0;
-    justify-content: space-around;
-  }
   #feed-content-header > button {
-    border: none;
-    outline: none;
     font-size: 18px;
     font-weight: 400;
-    height: fit-content;
-    background: transparent;
-    font-family: "DM Sans", sans-serif;
   }
   #feed-content-header > span {
     height: 2px;

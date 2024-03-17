@@ -12,7 +12,7 @@ const FeedContentHeader = () => {
 
     // this format below is to make the slider be directly under the first butoon when the page loads
     let firstbutton = document.getElementById("feed-content-header")
-      ?.children[0];
+      ?.children[1];
     if (sliderElement && firstbutton) {
       (sliderElement.lastElementChild as HTMLElement).style.left =
         (firstbutton as HTMLElement).offsetLeft + "px";
@@ -23,6 +23,8 @@ const FeedContentHeader = () => {
 
   const changeSliderPosition = (e: any) => {
     if (sliderElement) {
+      // e.target.style.color = "#543ee0";
+      // (sliderElement as HTMLElement).forEach((e:any) => {});
       (sliderElement.lastElementChild as HTMLElement).style.left =
         e.target.offsetLeft + "px";
       (sliderElement.lastElementChild as HTMLElement).style.width =

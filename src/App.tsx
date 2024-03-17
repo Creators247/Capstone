@@ -1,6 +1,7 @@
 import Home from "./component/Home";
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import { getStorage } from "firebase/storage";
+import { getFirestore } from "firebase/firestore";
 import { getAuth ,GoogleAuthProvider} from "firebase/auth";
 
 const firebaseConfig = {
@@ -15,9 +16,9 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth();
-const analytics = getAnalytics(app);
+export const db = getFirestore(app);
+export const Storage = getStorage(app);
 export const provider = new GoogleAuthProvider();
-console.log(analytics);
 
 function App() {
   return (

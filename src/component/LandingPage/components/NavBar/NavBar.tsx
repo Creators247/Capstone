@@ -1,5 +1,5 @@
-import "../styles/navbar.css";
-import { auth } from "../../../App";
+import "./navbar.css";
+import { auth } from "../../../../App";
 import { signOut } from "firebase/auth";
 import { Link } from "react-router-dom";
 import {
@@ -20,10 +20,19 @@ import {
 
 interface props {
   userExist: (data: any) => void;
+  renderComponent: {
+    renderFeeds: (e: any) => void;
+    renderBookMark: (e: any) => void;
+    renderTeamBlogs: (e: any) => void;
+    renderDraft: (e: any) => void;
+    renderAnalytics: (e: any) => void;
+    renderNotification: (e: any) => void;
+  };
 }
 
-const NavBar: React.FC<props> = ({ userExist }: any) => {
+const NavBar: React.FC<props> = ({ userExist, renderComponent }: any) => {
   const Userprofile = () => {
+    
     if (userExist.photoURL !== null) {
       return (
         <button>
@@ -61,27 +70,27 @@ const NavBar: React.FC<props> = ({ userExist }: any) => {
           <h3>Overview</h3>
         </div>
         <nav>
-          <button>
+          <button onClick={renderComponent.renderFeeds}>
             <FtxToken />
             <p>Feed</p>
           </button>
 
-          <button>
+          <button onClick={renderComponent.renderBookMark}>
             <Save2 />
             <p>Bookmarks</p>
           </button>
 
-          <button>
+          <button onClick={renderComponent.renderTeamBlogs}>
             <Profile2User />
             <p>Team blogs</p>
           </button>
 
-          <button>
+          <button onClick={renderComponent.renderDraft}>
             <DirectboxDefault />
             <p>Draft</p>
           </button>
 
-          <button>
+          <button onClick={renderComponent.renderAnalytics}>
             <Chart1 variant="Broken" />
             <p>Analytics</p>
           </button>
@@ -89,7 +98,7 @@ const NavBar: React.FC<props> = ({ userExist }: any) => {
       </section>
 
       <section className="trending tags">
-        <div >
+        <div>
           <TrendUp />
           <h3>Trending tags</h3>
         </div>
@@ -131,7 +140,7 @@ const NavBar: React.FC<props> = ({ userExist }: any) => {
         <nav>
           {userExist && <Userprofile />}
 
-          <button>
+          <button onClick={renderComponent.renderNotification}>
             <NotificationBing />
             <p>Notifications</p>
           </button>

@@ -7,7 +7,13 @@ import { collection, addDoc } from "firebase/firestore";
 import AddImageOrVideo from "./component/AddImageOrVideo";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
-const Post = () => {
+interface props {
+  renderComponent: {
+    renderPostEditor: () => void;
+  };
+}
+
+const Post: React.FC<props> = ({ renderComponent }: any) => {
   let [imageOrVideo, setimageOrVideo] = useState(false);
   let [articleHeading, setArticleHeading] = useState<string>("");
   let [articleVideoUrl, setArticleVideoUrl] = useState<any>(null);
@@ -41,30 +47,28 @@ const Post = () => {
     event.preventDefault();
 
     // Convert content to Markdown
-    let markdownContent = ``;
-    if (articleHeading !== "") {
-      markdownContent = `# ${articleHeading}\n\n${articleParagraph} `;
-    } else {
-      markdownContent = `# ${articleParagraph} `;
-    }
+    let markdownContent = `# ${articleHeading}\n\n${articleParagraph}`;
 
     // If image or video is uploaded, include the Markdown syntax for them
     if (articleImageUrl) {
       const imageRef = ref(Storage, `images/${articleImageUrl.name + v4()}`);
       let snapShot = await uploadBytes(imageRef, articleImageUrl);
       let imageUrl = await getDownloadURL(snapShot.ref);
-      markdownContent += `\n\n![Image](${imageUrl}) `;
+      markdownContent += `\n\n<div style="background: url(${imageUrl}) center center no-repeat; background-size: cover;""></div> `;
     }
 
     if (articleVideoUrl) {
       const videoRef = ref(Storage, `videos/${articleVideoUrl.name + v4()}`);
       let snapShot = await uploadBytes(videoRef, articleVideoUrl);
       let videoUrl = await getDownloadURL(snapShot.ref);
-      markdownContent += `\n\n[Video](${videoUrl})`;
+      markdownContent += `\n\n<video controls>
+      <source src="${videoUrl}" type="video/mp4">
+      Your browser does not support the video tag.
+      </video>`;
     }
 
+    // Save Markdown content to Firebase Firestore
     try {
-      // Save Markdown content to Firebase Firestore
       await addDoc(collection(db, "blogPosts"), {
         articleHeading,
         markdownContent,
@@ -78,6 +82,7 @@ const Post = () => {
       setArticleParagraph("");
       setArticleImageUrl(null);
       setArticleVideoUrl(null);
+      renderComponent.renderFeedsOnPageLoad;
     } catch (error) {
       console.error("Error adding document: ", error);
     }
@@ -159,7 +164,7 @@ const Post = () => {
   }
 
   const PublishButton = () => {
-    if (articleParagraph !== "") {
+    if (articleParagraph && articleHeading !== "") {
       return (
         <button type="submit">
           <p>Publish</p>

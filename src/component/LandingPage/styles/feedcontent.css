@@ -3,10 +3,10 @@
   height: 100%;
   display: flex;
   overflow: scroll;
+  max-height: 70dvh;
   max-width: 1076px;
   align-self: center;
   padding: 30px 75px;
-  max-height: 100dvh;
   padding-bottom: 100%;
   flex-direction: column;
   width: calc(95% - 200px);
@@ -61,7 +61,8 @@
     gap: 30px;
     max-width: 1076px;
     align-self: center;
-    padding: 30px 50px;
+    padding: 30px 30px;
+    padding-bottom: 100%;
     width: calc(95% - 100px);
   }
   #feed-content > :nth-child(1) > div > h3 {
@@ -81,7 +82,7 @@
   #feed-content {
     gap: 30px;
     width: 90%;
-    padding: 10px ;
+    padding: 10px;
     max-width: 1076px;
     align-self: center;
     border: 0px solid #d0d0d0;
@@ -105,14 +106,15 @@
 @media only screen and (max-width: 500px) {
   #feed-content {
     gap: 15px;
-    padding: 0 10px ;
+    padding: 0 10px;
     max-width: 1076px;
     align-self: center;
-    width:calc(95% - 20px) ;
+    padding-bottom: 100%;
+    width: calc(95% - 20px);
     border: 0px solid #d0d0d0;
   }
-  #feed-content > :nth-child(1){
-    align-items:center ;
+  #feed-content > :nth-child(1) {
+    align-items: center;
   }
   #feed-content > :nth-child(1) > div > h3 {
     font-size: 17px;

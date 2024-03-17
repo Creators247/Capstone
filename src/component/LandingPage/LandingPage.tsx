@@ -75,7 +75,7 @@ const Feeds = () => {
 
     renderPostEditor() {
       if (this.root) {
-        this.renderContent(<Post />);
+        this.renderContent(<Post renderComponent={allRenderMethods} />);
       }
     }
 

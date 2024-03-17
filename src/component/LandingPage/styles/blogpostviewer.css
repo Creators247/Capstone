@@ -1,0 +1,75 @@
+#blog-container {
+  width: 100%;
+  display: flex;
+  border-radius: 8px;
+  flex-direction: column;
+  border: 1px solid #d0d0d0;
+}
+#blog-post {
+  display: flex;
+}
+#blog-post > div {
+  gap: 12px;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  padding: 30px 44px;
+  flex-direction: column;
+  border-bottom: 1px solid #d0d0d0;
+}
+#blog-post > div > h1 {
+  font-size: 30px;
+  font-weight: 500;
+  width: fit-content;
+}
+#blog-post > div > p {
+  font-size: 17px;
+  font-weight: 400;
+  color: #626262;
+}
+#blog-post > div > div {
+  width: 100%;
+  height: 242px;
+  max-width: 610px;
+  border-radius: 8px;
+}
+#blog-post > div > video {
+  width: 100%;
+  height: 242px;
+  max-width: 610px;
+  border-radius: 8px;
+  background-color: black;
+}
+@media only screen and (max-width: 1024px) {
+  #blog-post > div {
+    padding: 25px 35px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  #blog-post > div {
+    gap: 10px;
+    padding: 20px 35px;
+  }
+  #blog-post > div > h1 {
+    font-size: 22px;
+    line-height: 25px;
+  }
+  #blog-post > div > p {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  #blog-post > div {
+    gap: 8px;
+    padding: 20px 15px;
+  }
+  #blog-post > div > h1 {
+    font-size: 18px;
+    line-height: 23px;
+  }
+  #blog-post > div > p {
+    font-size: 14px;
+    margin-bottom: 13px;
+  }
+}

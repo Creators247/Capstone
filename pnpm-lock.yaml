@@ -11,6 +11,9 @@ dependencies:
   iconsax-react:
     specifier: ^0.0.8
     version: 0.0.8(react@18.2.0)
+  marked:
+    specifier: ^12.0.1
+    version: 12.0.1
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -2153,6 +2156,12 @@ packages:
     dependencies:
       yallist: 4.0.0
     dev: true
+
+  /marked@12.0.1:
+    resolution: {integrity: sha512-Y1/V2yafOcOdWQCX0XpAKXzDakPOpn6U0YLxTJs3cww6VxOzZV1BTOOYWLvH3gX38cq+iLwljHHTnMtlDfg01Q==}
+    engines: {node: '>= 18'}
+    hasBin: true
+    dev: false
 
   /merge2@1.4.1:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}

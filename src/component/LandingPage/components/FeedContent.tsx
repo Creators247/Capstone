@@ -1,9 +1,11 @@
 import "../styles/feedcontent.css";
 import { Edit2 } from "iconsax-react";
-import { auth } from "../../../App.tsx";
+import { auth, db } from "../../../App.tsx";
 import { useEffect, useState } from "react";
+import BlogPostViewer from "./BlogPostViewer.tsx";
 import { onAuthStateChanged } from "firebase/auth";
 import FeedContentHeader from "./FeedContentHeader";
+import { getDocs, collection } from "firebase/firestore";
 
 interface props {
   renderComponent: {
@@ -19,6 +21,7 @@ interface props {
 
 const FeedContent: React.FC<props> = ({ renderComponent }: any) => {
   let [userLogin, setUserLogin] = useState<any>(null);
+  const [blogPosts, setBlogPosts] = useState<any[]>([]);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -34,6 +37,23 @@ const FeedContent: React.FC<props> = ({ renderComponent }: any) => {
     return () => {
       unsubscribe();
     };
+  }, []);
+
+  useEffect(() => {
+    const fetchBlogPosts = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "blogPosts"));
+        const posts = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setBlogPosts(posts);
+      } catch (error) {
+        console.error("Error fetching blog posts:", error);
+      }
+    };
+
+    fetchBlogPosts();
   }, []);
 
   const HandlePost = () => {
@@ -54,55 +74,7 @@ const FeedContent: React.FC<props> = ({ renderComponent }: any) => {
       </div>
       <div>
         <FeedContentHeader />
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
-        <p>great</p>
+        <BlogPostViewer blogPosts={blogPosts} />
       </div>
     </section>
   );

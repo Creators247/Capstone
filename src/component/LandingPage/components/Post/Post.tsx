@@ -1,9 +1,10 @@
 import "./post.css";
 import { v4 } from "uuid";
-import { useState } from "react";
 import Article from "./component/Article";
-import { db, Storage } from "../../../../App";
-import { collection, addDoc } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth, db, Storage } from "../../../../App";
+import { addDoc, collection } from "firebase/firestore";
 import AddImageOrVideo from "./component/AddImageOrVideo";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
@@ -14,6 +15,7 @@ interface props {
 }
 
 const Post: React.FC<props> = ({ renderComponent }: any) => {
+  let [userExist, setUserExist] = useState<any>(null);
   let [imageOrVideo, setimageOrVideo] = useState(false);
   let [articleHeading, setArticleHeading] = useState<string>("");
   let [articleVideoUrl, setArticleVideoUrl] = useState<any>(null);
@@ -43,48 +45,63 @@ const Post: React.FC<props> = ({ renderComponent }: any) => {
     }
   };
 
+  useEffect(() => {
+    onAuthStateChanged(auth, (u) => {
+      if (u) {
+        userExist = u;
+        setUserExist(userExist);
+      } else {
+        userExist = null;
+        setUserExist(userExist);
+      }
+    });
+  }, []);
+
   const handlePublishPost = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    // Convert content to Markdown
-    let markdownContent = `# ${articleHeading}\n\n${articleParagraph}`;
+    if (userExist) {
+      let markdownContent = `${articleParagraph}`;
+      const userId = userExist.uid;
+      // If image or video is uploaded, include the Markdown syntax for them
+      if (articleImageUrl) {
+        const imageRef = ref(Storage, `images/${articleImageUrl.name + v4()}`);
+        let snapShot = await uploadBytes(imageRef, articleImageUrl);
+        let imageUrl = await getDownloadURL(snapShot.ref);
+        markdownContent += `\n\n<div style="background: url(${imageUrl}) center center no-repeat; background-size: cover;""></div> `;
+      }
 
-    // If image or video is uploaded, include the Markdown syntax for them
-    if (articleImageUrl) {
-      const imageRef = ref(Storage, `images/${articleImageUrl.name + v4()}`);
-      let snapShot = await uploadBytes(imageRef, articleImageUrl);
-      let imageUrl = await getDownloadURL(snapShot.ref);
-      markdownContent += `\n\n<div style="background: url(${imageUrl}) center center no-repeat; background-size: cover;""></div> `;
-    }
-
-    if (articleVideoUrl) {
-      const videoRef = ref(Storage, `videos/${articleVideoUrl.name + v4()}`);
-      let snapShot = await uploadBytes(videoRef, articleVideoUrl);
-      let videoUrl = await getDownloadURL(snapShot.ref);
-      markdownContent += `\n\n<video controls>
+      if (articleVideoUrl) {
+        const videoRef = ref(Storage, `videos/${articleVideoUrl.name + v4()}`);
+        let snapShot = await uploadBytes(videoRef, articleVideoUrl);
+        let videoUrl = await getDownloadURL(snapShot.ref);
+        markdownContent += `\n\n<video controls>
       <source src="${videoUrl}" type="video/mp4">
       Your browser does not support the video tag.
       </video>`;
-    }
+      }
 
-    // Save Markdown content to Firebase Firestore
-    try {
-      await addDoc(collection(db, "blogPosts"), {
-        articleHeading,
-        markdownContent,
-        createdAt: new Date(),
-      });
+      // Save Markdown content to Firebase Firestore
+      try {
+        await addDoc(collection(db, "blogPosts"), {
+          userId,
+          articleHeading,
+          markdownContent,
+          createdAt: new Date(),
+        });
 
-      // Reset form fields after submission
-      setArticleImage(null);
-      setArticleVideo(null);
-      setArticleHeading("");
-      setArticleParagraph("");
-      setArticleImageUrl(null);
-      setArticleVideoUrl(null);
-      renderComponent.renderFeedsOnPageLoad;
-    } catch (error) {
-      console.error("Error adding document: ", error);
+        // Reset form fields after submission
+        setUserExist(null);
+        setArticleImage(null);
+        setArticleVideo(null);
+        setArticleHeading("");
+        setArticleParagraph("");
+        setArticleImageUrl(null);
+        setArticleVideoUrl(null);
+        renderComponent.renderFeedsOnPageLoad;
+      } catch (error) {
+        console.error("Error adding document: ", error);
+      }
     }
   };
 

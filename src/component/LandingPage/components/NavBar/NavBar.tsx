@@ -21,10 +21,10 @@ import {
 interface props {
   userExist: (data: any) => void;
   renderComponent: {
+    renderDraft: (e: any) => void;
     renderFeeds: (e: any) => void;
     renderBookMark: (e: any) => void;
     renderTeamBlogs: (e: any) => void;
-    renderDraft: (e: any) => void;
     renderAnalytics: (e: any) => void;
     renderNotification: (e: any) => void;
   };
@@ -32,10 +32,9 @@ interface props {
 
 const NavBar: React.FC<props> = ({ userExist, renderComponent }: any) => {
   const Userprofile = () => {
-    
     if (userExist.photoURL !== null) {
       return (
-        <button>
+        <Link to="User-Account">
           <div
             style={{
               background: `url(${userExist.photoURL}) no-repeat center`,
@@ -45,14 +44,14 @@ const NavBar: React.FC<props> = ({ userExist, renderComponent }: any) => {
             <div></div>
           </div>
           <p>Account</p>
-        </button>
+        </Link>
       );
     } else {
       return (
-        <button style={{ color: "#543ee0" }}>
+        <Link to="User-Account" style={{ color: "#543ee0" }}>
           <ProfileTick />
           <p>Account</p>
-        </button>
+        </Link>
       );
     }
   };

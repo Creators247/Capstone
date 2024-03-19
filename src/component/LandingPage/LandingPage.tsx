@@ -1,11 +1,12 @@
 import "./landingpage.css";
 import ReactDOM from "react-dom/client";
-import { auth } from "../../App.tsx";
+import { auth, db } from "../../App.tsx";
 import Post from "./components/Post/Post.tsx";
 import { onAuthStateChanged } from "firebase/auth";
 import SearchBar from "./components/SearchBar.tsx";
 import NavBar from "./components/NavBar/NavBar.tsx";
 import FeedContent from "./components/FeedContent.tsx";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import React, { useState, useRef, useEffect } from "react";
 import Draft from "./components/NavBar/components/Draft.tsx";
 import BookMark from "./components/NavBar/components/BookMark.tsx";
@@ -19,6 +20,7 @@ const Feeds = () => {
   let [userLogin, setUserLogin] = useState<any>(null);
   let [allRenderMethods, setAllRenderMethods] = useState<any>(null);
 
+  // checking if the user is signed in or not
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -58,6 +60,32 @@ const Feeds = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if (userLogin) {
+      createUserProfile();
+    }
+  }, [userLogin]);
+
+  const createUserProfile = async () => {
+    const userID = userLogin.uid;
+    const userRef = doc(db, "userProfiles", userID);
+    const userDoc = await getDoc(userRef);
+    const userFileExists = userDoc.exists();
+    if (!userFileExists) {
+      const userProfileData = {
+        userBlogs: {},
+        userOccupation: null,
+        userName: userLogin.displayName,
+        userEmailAddress: userLogin.email,
+        userBackGroundProfilePicture: null,
+        userCreationDate: userLogin.metadata.creationTime,
+        userProfilePicture:
+          "https://firebasestorage.googleapis.com/v0/b/chatter-ebb5e.appspot.com/o/Default%20Pics%2Fblank-profile-picture-973460_1920.png?alt=media&token=f39574c8-b0e6-4805-bf5f-5ac241dbf3de",
+      };
+      await setDoc(userRef, userProfileData);
+    }
+  };
+
   class MountComponent {
     root;
 
@@ -80,15 +108,11 @@ const Feeds = () => {
     }
 
     renderFeedsOnPageLoad() {
-      this.renderContent(
-        <FeedContent  renderComponent={allRenderMethods} />
-      );
+      this.renderContent(<FeedContent renderComponent={allRenderMethods} />);
     }
 
     renderFeeds(e: any) {
-      this.renderContent(
-        <FeedContent renderComponent={allRenderMethods} />
-      );
+      this.renderContent(<FeedContent renderComponent={allRenderMethods} />);
       this.updateNavButtonColor(e);
     }
 

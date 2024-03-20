@@ -1,5 +1,5 @@
 import "./navbar.css";
-import { auth } from "../../../../App";
+import { auth, db } from "../../../../App";
 import { signOut } from "firebase/auth";
 import { Link } from "react-router-dom";
 import {
@@ -17,6 +17,8 @@ import {
   DirectboxDefault,
   NotificationBing,
 } from "iconsax-react";
+import { useEffect, useState } from "react";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 
 interface props {
   userExist: (data: any) => void;
@@ -31,13 +33,54 @@ interface props {
 }
 
 const NavBar: React.FC<props> = ({ userExist, renderComponent }: any) => {
+  let [userProfile, setUserProfile] = useState<any>(null);
+
+  useEffect(() => {
+    if (userExist) {
+      checkifUserProfileExists();
+    }
+  }, [userExist]);
+
+  const createUserProfile = async () => {
+    const userID = userExist.uid;
+    const userRef = doc(db, "userProfiles", userID);
+    const userDoc = await getDoc(userRef);
+    const userFileExists = userDoc.exists();
+    if (!userFileExists) {
+      const userProfileData = {
+        userBlogs: {},
+        userOccupation: null,
+        userName: userExist.displayName,
+        userEmailAddress: userExist.email,
+        userBackGroundProfilePicture: null,
+        userCreationDate: userExist.metadata.creationTime,
+        userProfilePicture:
+          "https://firebasestorage.googleapis.com/v0/b/chatter-ebb5e.appspot.com/o/Default%20Pics%2Fblank-profile-picture-973460_1920.png?alt=media&token=f39574c8-b0e6-4805-bf5f-5ac241dbf3de",
+      };
+      await setDoc(userRef, userProfileData);
+    }
+  };
+
+  const checkifUserProfileExists = async () => {
+    const userID = userExist.uid;
+    const userRef = doc(db, "userProfiles", userID);
+    const userDoc = await getDoc(userRef);
+    if (userDoc.exists()) {
+      userProfile = userDoc.data();
+      setUserProfile(userProfile);
+    } else {
+      await createUserProfile();
+      window.location.href = "/";
+    }
+  };
+
   const Userprofile = () => {
-    if (userExist.photoURL !== null) {
+    if (userProfile !== null) {
       return (
-        <Link to="User-Account">
+        <Link to="user-account">
           <div
             style={{
-              background: `url(${userExist.photoURL}) no-repeat center`,
+              background: `url(${userProfile.userProfilePicture}) no-repeat center`,
               backgroundSize: "cover",
             }}
           >
@@ -48,7 +91,7 @@ const NavBar: React.FC<props> = ({ userExist, renderComponent }: any) => {
       );
     } else {
       return (
-        <Link to="User-Account" style={{ color: "#543ee0" }}>
+        <Link to="user-account" style={{ color: "#543ee0" }}>
           <ProfileTick />
           <p>Account</p>
         </Link>

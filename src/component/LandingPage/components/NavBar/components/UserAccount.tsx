@@ -2,15 +2,15 @@ import "../style/user-account.css";
 import { Calendar1 } from "iconsax-react";
 import { useEffect, useState } from "react";
 import { db, auth } from "../../../../../App";
-import { doc, getDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 
 const UserAccount = () => {
   let [user, setUser] = useState<any>(null);
   let [userProfile, setUserProfile] = useState<any>(null);
 
   useEffect(() => {
-    onAuthStateChanged(auth, (e) => {
+    const checkUser = onAuthStateChanged(auth, (e) => {
       if (e) {
         user = e;
         setUser(user);
@@ -19,22 +19,45 @@ const UserAccount = () => {
         setUser(user);
       }
     });
+    return checkUser();
   }, []);
 
   useEffect(() => {
     if (user) {
-      checkifUserFileExists();
+      checkifUserProfileExists();
     }
   }, [user]);
 
-  const checkifUserFileExists = async () => {
+  const createUserProfile = async () => {
+    const userID = user.uid;
+    const userRef = doc(db, "userProfiles", userID);
+    const userDoc = await getDoc(userRef);
+    const userFileExists = userDoc.exists();
+    if (!userFileExists) {
+      const userProfileData = {
+        userBlogs: {},
+        userOccupation: null,
+        userName: user.displayName,
+        userEmailAddress: user.email,
+        userBackGroundProfilePicture: null,
+        userCreationDate: user.metadata.creationTime,
+        userProfilePicture:
+          "https://firebasestorage.googleapis.com/v0/b/chatter-ebb5e.appspot.com/o/Default%20Pics%2Fblank-profile-picture-973460_1920.png?alt=media&token=f39574c8-b0e6-4805-bf5f-5ac241dbf3de",
+      };
+      await setDoc(userRef, userProfileData);
+    }
+  };
+
+  const checkifUserProfileExists = async () => {
     const userID = user.uid;
     const userRef = doc(db, "userProfiles", userID);
     const userDoc = await getDoc(userRef);
     if (userDoc.exists()) {
-      console.log(userDoc.data());
       userProfile = userDoc.data();
       setUserProfile(userProfile);
+    } else {
+      await createUserProfile();
+      window.location.href = "/user-account";
     }
   };
 

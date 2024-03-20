@@ -10,18 +10,12 @@ import { getDocs, collection } from "firebase/firestore";
 interface props {
   renderComponent: {
     renderPostEditor: () => void;
-    renderFeeds: (e: any) => void;
-    renderDraft: (e: any) => void;
-    renderBookMark: (e: any) => void;
-    renderTeamBlogs: (e: any) => void;
-    renderAnalytics: (e: any) => void;
-    renderNotification: (e: any) => void;
   };
 }
 
 const FeedContent: React.FC<props> = ({ renderComponent }: any) => {
   let [userLogin, setUserLogin] = useState<any>(null);
-  const [blogPosts, setBlogPosts] = useState<any[]>([]);
+  let [blogPosts, setBlogPosts] = useState<any[]>([]);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -47,7 +41,8 @@ const FeedContent: React.FC<props> = ({ renderComponent }: any) => {
           id: doc.id,
           ...doc.data(),
         }));
-        setBlogPosts(posts);
+        blogPosts = posts;
+        setBlogPosts(blogPosts);
       } catch (error) {
         console.error("Error fetching blog posts:", error);
       }

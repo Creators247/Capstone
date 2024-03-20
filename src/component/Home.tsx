@@ -11,7 +11,7 @@ const Home = () => {
         <Route path="/" element={<Feeds />} />
         <Route path="/about" element={<About />} />
         <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/User-Account" element={<UserAccount />} />
+        <Route path="/user-account" element={<UserAccount />} />
       </Routes>
     </>
   );

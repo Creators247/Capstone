@@ -90,12 +90,12 @@
   pointer-events: none;
   transition: all 0.5s ease;
 }
-#nav-bar > section > nav > button > div {
+#nav-bar > section > nav > a > div {
   width: 25px;
   height: 26px;
   border-radius: 50%;
 }
-#nav-bar > section > nav > button > div > div {
+#nav-bar > section > nav > a > div > div {
   width: 100%;
   height: 100%;
   border-radius: 50%;
@@ -149,7 +149,7 @@
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) {a
   #nav-bar > section {
     min-width: 60px;
     width: fit-content;

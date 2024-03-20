@@ -10,7 +10,7 @@ const FeedContentHeader = () => {
     sliderElement = slider;
     setSliderElement(sliderElement);
 
-    // this format below is to make the slider be directly under the first butoon when the page loads
+    // this format below is to make the slider be directly under the featured button when the page loads
     let firstbutton = document.getElementById("feed-content-header")
       ?.children[1];
     if (sliderElement && firstbutton) {
@@ -19,7 +19,7 @@ const FeedContentHeader = () => {
       (sliderElement.lastElementChild as HTMLElement).style.width =
         (firstbutton as HTMLElement).offsetWidth + "px";
     }
-  });
+  },[]);
 
   const changeSliderPosition = (e: any) => {
     if (sliderElement) {

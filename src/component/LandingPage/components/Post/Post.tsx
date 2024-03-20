@@ -85,6 +85,9 @@ const Post: React.FC<props> = ({ renderComponent }: any) => {
       try {
         await addDoc(collection(db, "blogPosts"), {
           userId,
+          view: [],
+          likes: [],
+          Comment: {},
           articleHeading,
           markdownContent,
           createdAt: new Date(),

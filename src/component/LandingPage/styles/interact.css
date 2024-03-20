@@ -1,0 +1,26 @@
+#interact {
+  display: flex;
+  flex-direction: column;
+}
+#interact > :nth-child(1) {
+  width: 100%;
+  display: flex;
+  padding: 0 5px;
+  max-width: 600px;
+  justify-content: space-between;
+}
+#blog-post #interact > :nth-child(1) > button {
+  gap: 5px;
+  padding: 0;
+  border: none;
+  outline: none;
+  display: flex;
+  border-radius: 0;
+  align-items: center;
+  height: fit-content;
+  flex-direction: row;
+  background-color: transparent;
+}
+#blog-post #interact > :nth-child(1) > button  > p{
+  color: #919191;
+}

@@ -1,7 +1,7 @@
 import SignUp from "./SignUp/SignUp";
 import Feeds from "./Feeds/Feeds.tsx";
 import { Routes, Route } from "react-router-dom";
-import Landingpage from "./landingpage/Landingpage.tsx";
+import Landingpage from "./landpage/Landingpage.tsx";
 import UserAccount from "./Feeds/components/NavBar/components/UserAccount";
 
 const Home = () => {

@@ -179,7 +179,8 @@ const Section5 = () => {
     </section>
   );
 };
-function About() {
+
+function Landingpage() {
   return (
     <>
       <Header />
@@ -195,4 +196,4 @@ function About() {
   );
 }
 
-export default About;
+export default Landingpage;

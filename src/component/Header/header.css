@@ -40,29 +40,26 @@
   display: flex;
 }
 #header .signin-buttons > :nth-child(1) {
-  width: 157px;
-  height: 50px;
+  border: none;
   font-size: 18px;
   font-weight: 700;
-  line-height: 27px;
+  color: #543ee0;
   border-radius: 8px;
-  letter-spacing: 0em;
-  transition: all 1s ease;
+  width: fit-content;
+  padding: 15px 50px;
+  text-decoration: none;
   background-color: #fff;
-  border: 1px solid #543ee0;
   font-family: "DM Sans", sans-serif;
 }
 #header .signin-buttons > :nth-child(2) {
-  width: 157px;
-  height: 50px;
   border: none;
   color: #fff;
   font-size: 18px;
   font-weight: 700;
-  line-height: 27px;
   border-radius: 8px;
-  letter-spacing: 0em;
-  transition: all 1s ease;
+  width: fit-content;
+  padding: 15px 50px;
+  text-decoration: none;
   background-color: #543ee0;
   font-family: "DM Sans", sans-serif;
 }
@@ -138,13 +135,9 @@
   #header > div {
     gap: 50px;
   }
-  #header .signin-buttons > :nth-child(1) {
-    padding: 0;
-    height: 50px;
-  }
+  #header .signin-buttons > :nth-child(1),
   #header .signin-buttons > :nth-child(2) {
-    padding: 0;
-    height: 50px;
+    padding: 10px 40px;
   }
 }
 @media only screen and (max-width: 1000px) {
@@ -184,7 +177,7 @@
   #header {
     padding: 0 10px;
   }
-  #header  .logo {
+  #header .logo {
     font-size: 30px;
   }
   #header .navicon > span {
@@ -236,13 +229,9 @@
   #header .open-nav-contanier {
     gap: 20px;
   }
-  #header .signin-buttons > :nth-child(1) {
-    width: 130px;
-    height: 40px;
-  }
+  #header .signin-buttons > :nth-child(1),
   #header .signin-buttons > :nth-child(2) {
-    width: 130px;
-    height: 40px;
+    padding: 10px 40px;
   }
 }
 @keyframes slide-in {

@@ -38,15 +38,15 @@ function Header() {
         {window.screen.width <= 1000 ? <h1 className="logo">CHATTER</h1> : null}
 
         <nav>
-          <Link to="/sign-up">Home</Link>
-          <Link to="/Feeds">About Us</Link>
+          <Link to="/">Home</Link>
+          <Link to="/">About Us</Link>
           <Link to="/">Contact</Link>
-          <Link to="/">Blogs</Link>
+          <Link to="/feeds">Blogs</Link>
         </nav>
 
         <div className="signin-buttons">
-          <button>Log in</button>
-          <button>Sign up</button>
+          <Link to='/sign-up'>Log in</Link>
+          <Link to='/sign-up'>Sign up</Link>
         </div>
       </div>
       {window.screen.width <= 1000 ? <NavbarIcon /> : null}

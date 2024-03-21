@@ -1,15 +1,15 @@
-import About from "./About/About";
 import SignUp from "./SignUp/SignUp";
-import Feeds from "./LandingPage/LandingPage";
+import Feeds from "./Feeds/LandingPage";
 import { Routes, Route } from "react-router-dom";
-import UserAccount from "./LandingPage/components/NavBar/components/UserAccount";
+import About from "./landingpage/Landingpage";
+import UserAccount from "./Feeds/components/NavBar/components/UserAccount";
 
 const Home = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Feeds />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/" element={<About />} />
+        <Route path="/feeds" element={<Feeds />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/user-account" element={<UserAccount />} />
       </Routes>

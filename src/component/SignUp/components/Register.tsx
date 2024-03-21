@@ -81,7 +81,7 @@ const Register: React.FC = () => {
           await updateProfile(user, {
             displayName: `${fullName.firstName} ${fullName.lastName}`,
           });
-          window.location.href = "/";
+          window.location.href = "/feeds";
         }
         e.target.reset();
       } catch (error: unknown) {

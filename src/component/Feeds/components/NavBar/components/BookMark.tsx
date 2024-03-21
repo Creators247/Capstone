@@ -2,7 +2,7 @@ import "../style/book-mark.css"
 
 const BookMark = () => {
   return (
-    <div>BookMark</div>
+    <section id="book-mark">BookMark</section>
   )
 }
 

@@ -48,7 +48,7 @@ const Login = () => {
       await signInWithEmailAndPassword(auth, email, password);
       const user = auth.currentUser;
       if (user) {
-        window.location.href = "/";
+        window.location.href = "/feeds";
       }
     } catch (error: unknown) {
       if (error instanceof Error && "code" in error) {

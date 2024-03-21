@@ -1,7 +1,7 @@
 import "../style/draft.css";
 
 const Draft = () => {
-  return <div>Draft</div>;
+  return <section id="draft">Draft</section>;
 };
 
 export default Draft;

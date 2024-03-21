@@ -2,7 +2,7 @@ import "../style/team-blogs.css"
 
 const TeamBlogs = () => {
   return (
-    <div>TeamBlogs</div>
+    <section id="team-blogs">TeamBlogs</section>
   )
 }
 

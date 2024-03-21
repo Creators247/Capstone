@@ -15,7 +15,7 @@ const SignInWithOthers = () => {
     try {
       const user = await signInWithPopup(auth, provider);
       if (user) {
-        window.location.href = "/";
+        window.location.href = "/feeds";
       }
     } catch (error: any) {
       switch ((error as typeof error)?.code) {

@@ -2,7 +2,7 @@ import "../style/notification.css"
 
 const Notification = () => {
   return (
-    <div>Notification</div>
+    <section id="notification">Notification</section>
   )
 }
 

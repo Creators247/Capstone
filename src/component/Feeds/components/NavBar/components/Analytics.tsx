@@ -2,7 +2,7 @@ import "../style/analytics.css";
 
 const Analytics = () => {
   return (
-    <div>Analytics</div>
+    <section id="analytics">Analytics</section>
   )
 }
 

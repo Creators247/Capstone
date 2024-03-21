@@ -87,7 +87,7 @@ const Post: React.FC<props> = ({ renderComponent }: any) => {
           userId,
           view: [],
           likes: [],
-          Comment: {},
+          comments: [],
           articleHeading,
           markdownContent,
           createdAt: new Date(),

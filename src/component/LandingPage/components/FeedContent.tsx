@@ -2,9 +2,11 @@ import "../styles/feedcontent.css";
 import { Edit2 } from "iconsax-react";
 import { auth, db } from "../../../App.tsx";
 import { useEffect, useState } from "react";
+import 'react-toastify/dist/ReactToastify.css';
 import BlogPostViewer from "./BlogPostViewer.tsx";
 import { onAuthStateChanged } from "firebase/auth";
 import FeedContentHeader from "./FeedContentHeader";
+import { ToastContainer, toast } from 'react-toastify';
 import { getDocs, collection } from "firebase/firestore";
 
 interface props {
@@ -52,7 +54,20 @@ const FeedContent: React.FC<props> = ({ renderComponent }: any) => {
   }, []);
 
   const HandlePost = () => {
-    if (userLogin) if (renderComponent) renderComponent.renderPostEditor();
+    if (userLogin) {
+      if (renderComponent) renderComponent.renderPostEditor();
+    }else{
+      toast.error(`Unknown User Cant \n Post Pls Sign In`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+    }
   };
 
   return (
@@ -61,6 +76,7 @@ const FeedContent: React.FC<props> = ({ renderComponent }: any) => {
         <div>
           <h3>FEEDS</h3>
           <p>Explore different content you’d love </p>
+        <ToastContainer />
         </div>
         <button onClick={HandlePost}>
           <Edit2 />

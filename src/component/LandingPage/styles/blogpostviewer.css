@@ -2,7 +2,6 @@
   width: 100%;
   display: flex;
   border-radius: 8px;
-  padding-bottom: 100%;
   flex-direction: column;
   border: 1px solid #d0d0d0;
 }

@@ -1,4 +1,4 @@
-import "./landingpage.css";
+import "./Feeds.css";
 import ReactDOM from "react-dom/client";
 import { auth, db } from "../../App.tsx";
 import Post from "./components/Post/Post.tsx";
